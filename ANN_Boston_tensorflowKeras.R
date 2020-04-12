@@ -3,7 +3,7 @@ library(tensorflow)
 library(keras)
 library(MASS)
 library(caTools)
-
+#install_tensorflow()
 dt <- setData(Boston, "medv")
 
 Boston.scaled <- as.data.frame(scale(Boston))
@@ -24,8 +24,8 @@ tf_test <- Boston.scaled[!Boston.split, ]
 
 X_train = as.matrix(tf_train[,1:13])
 X_test = as.matrix(tf_test[,1:13])
-y_train = as.matrix(tf_train[,14])
-y_test = as.matrix(tf_test[,14])
+Y_train = as.matrix(tf_train[,14])
+Y_test = as.matrix(tf_test[,14])
 
 model <- keras_model_sequential() 
 
@@ -42,13 +42,13 @@ model %>%
   layer_dense(units = 10, activation = 'softmax')
 
 model %>% compile(
-  loss = 'categorical_crossentropy',
+  loss = 'mse',
   optimizer = optimizer_rmsprop(),
   metrics = c('accuracy')
 )
 
 model %>% fit(
   X_train, Y_train, 
-  epochs = 5, batch_size = 32, verbose = 1, 
+  epochs = 100, batch_size = 32, verbose = 1, 
   validation_split = 0.1
 )
