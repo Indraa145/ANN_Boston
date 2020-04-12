@@ -15,7 +15,7 @@ Boston.scaled$medv <- scale(Boston$medv
 y = as.matrix(Boston.scaled[,14])
 y = as.numeric(y)
 x = as.numeric(as.matrix(Boston.scaled[,1:13]))
-x = matrix(as.numeric(x),ncol=9)
+x = matrix(as.numeric(x),ncol=14)
 
 train.x = x
 train.y = y
