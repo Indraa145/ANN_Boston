@@ -270,8 +270,8 @@ tf_test <- Boston.scaled[!Boston.split, ]
 
 X_train = as.matrix(tf_train[,1:13])
 X_test = as.matrix(tf_test[,1:13])
-y_train = as.matrix(tf_train[,14])
-y_test = as.matrix(tf_test[,14])
+Y_train = as.matrix(tf_train[,14])
+Y_test = as.matrix(tf_test[,14])
 ```
 Build the neural network
 ```R
@@ -292,7 +292,7 @@ model %>%
 Compile the model and fit the data into the model
 ```R
 model %>% compile(
-  loss = 'categorical_crossentropy',
+  loss = 'mse',
   optimizer = optimizer_rmsprop(),
   metrics = c('accuracy')
 )
