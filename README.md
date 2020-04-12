@@ -299,7 +299,7 @@ model %>% compile(
 
 model %>% fit(
   X_train, Y_train, 
-  epochs = 5, batch_size = 32, verbose = 1, 
+  epochs = 100, batch_size = 32, verbose = 1, 
   validation_split = 0.1
 )
 ```
